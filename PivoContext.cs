@@ -18,6 +18,8 @@ namespace WPF_Gui_framework
         public DbSet<Stupnovitost> Stupnovitost { get; set; }
         public DbSet<TypPiva> TypPiva{ get; set; }
         public object Stupnovitosti { get; internal set; }
+        public object Barvy { get; internal set; }
+        public object TypyPiva { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

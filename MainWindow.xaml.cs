@@ -76,8 +76,6 @@ namespace WPF_Gui_framework
         {
             AddPivoWindow addPivoWindow = new AddPivoWindow();
             addPivoWindow.Show();
-
-
         }
     }
 }

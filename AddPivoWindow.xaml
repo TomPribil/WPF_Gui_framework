@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Gui_framework"
         mc:Ignorable="d"
-        Title="Přidání piva" Height="374" Width="320">
-    <Grid>
+        Title="Přidání piva" Height="250" Width="320">
+    <!--<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -91,8 +91,8 @@
             <ComboBoxItem Content="Nachmelená opice"/>
         </ComboBox>
         <Button Grid.Row="7" Grid.ColumnSpan="2" x:Name="AddButton" Width="120" Height="30" Content="Přidat pivo"/>
-    </Grid>
-    <!--<Grid>
+    </Grid>-->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -133,10 +133,7 @@
         <Label Grid.Row="6" Grid.Column="0" Content="Pivovar:"/>
         <ComboBox Grid.Row="6" Grid.Column="1" x:Name="cbPivovar"/>
 
-        <Label Grid.Row="7" Grid.Column="0" Content="Popis:"/>
-        <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtPopis" TextWrapping="Wrap" AcceptsReturn="True" Height="100"/>
-
-        <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Content="Add Beer" Click="btnAdd_Click"/>
+        <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Content="Přidat pivo" Click="btnAdd_Click"/>
         <Button Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Content="Cancel" Click="btnCancel_Click"/>
-    </Grid>-->
+    </Grid>
 </Window>

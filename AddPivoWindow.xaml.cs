@@ -11,68 +11,76 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_Gui_framework.Tabulky;
 
 namespace WPF_Gui_framework
 {
-    /// <summary>
-    /// Interaction logic for AddPivoWindow.xaml
-    /// </summary>
+
     public partial class AddPivoWindow : Window
 
 
     {
-        //public Pivo NewPivo { get; set; }
-        //public AddPivoWindow()
-        //{
-        //    InitializeComponent();
-        //    _context = new PivoContext();
-        //}
-        //private void FillComboBoxes()
-        //{
-        //    // Fill the Stupnovitost ComboBox
-        //    var stupne = _context.Stupnovitosti.ToList();
-        //    cboStupnovitost.ItemsSource = stupne;
-        //    cboStupnovitost.DisplayMemberPath = "Nazev";
-        //    cboStupnovitost.SelectedValuePath = "Id";
+        private PivoContext _context;
 
-        //    // Fill the Barva ComboBox
-        //    var barvy = _context.Barvy.ToList();
-        //    cboBarva.ItemsSource = barvy;
-        //    cboBarva.DisplayMemberPath = "Nazev";
-        //    cboBarva.SelectedValuePath = "Id";
+        public Pivo NewPivo { get; set; }
+        public AddPivoWindow()
+        {
+            InitializeComponent();
+            _context = new PivoContext();
+            FillComboBoxes();
+        }
+        private void FillComboBoxes()
+        {
 
-        //    // Fill the TypPiva ComboBox
-        //    var typy = _context.TypyPiv.ToList();
-        //    cboTypPiva.ItemsSource = typy;
-        //    cboTypPiva.DisplayMemberPath = "Nazev";
-        //    cboTypPiva.SelectedValuePath = "Id";
+            cbStupnovitost.ItemsSource = _context.Stupnovitost.ToList();
+            cbStupnovitost.DisplayMemberPath = "Nazev";
+            cbStupnovitost.SelectedValuePath = "Id_stupne";
 
-        //    // Fill the Pivovary ComboBox
-        //    var pivovary = _context.Pivovary.ToList();
-        //    cboPivovar.ItemsSource = pivovary;
-        //    cboPivovar.DisplayMemberPath = "Nazev";
-        //    cboPivovar.SelectedValuePath = "Id";
-        //}
-        //private void btnSave_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // Create a new Pivo object with the user's input
-        //    var pivo = new Pivo
-        //    {
-        //        Nazev = txtNazev.Text,
-        //        IBU = (int)numIBU.Value,
-        //        Obsah_alkoholu = (double)numObsahAlkoholu.Value,
-        //        StupnovitostId = (int)cboStupnovitost.SelectedValue,
-        //        BarvaId = (int)cboBarva.SelectedValue,
-        //        TypPivaId = (int)cboTypPiva.SelectedValue,
-        //        PivovarId = (int)cboPivovar.SelectedValue
-        //    };
 
-        //    // Add the new Pivo object to the database
-        //    _context.Piva.Add(pivo);
-        //    _context.SaveChanges();
+            cbBarva.ItemsSource = _context.Barva.ToList();
+            cbBarva.DisplayMemberPath = "Nazev";
+            cbBarva.SelectedValuePath = "Id_barvy";
 
-        //    // Close the window
-        //    Close();
-        //}
+
+            cbTypPiva.ItemsSource = _context.TypPiva.ToList();
+            cbTypPiva.DisplayMemberPath = "Nazev";
+            cbTypPiva.SelectedValuePath = "Id_typu";
+
+            cbPivovar.ItemsSource = _context.Pivovary.ToList();
+            cbPivovar.DisplayMemberPath = "Nazev";
+            cbPivovar.SelectedValuePath = "Id_pivovaru";
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNazev.Text) || string.IsNullOrEmpty(txtIBU.Text) || string.IsNullOrEmpty(txtObsahAlkoholu.Text) ||
+                cbStupnovitost.SelectedValue == null || cbBarva.SelectedValue == null || 
+                cbTypPiva.SelectedValue == null || cbPivovar.SelectedValue == null)
+            {
+                MessageBox.Show("Před odesláním musíte vyplnit všechny informace!");
+                return;
+            }
+
+            var pivo = new Pivo
+            {
+                Nazev = txtNazev.Text,
+                IBU = int.Parse(txtIBU.Text),
+                Obsah_alkoholu = decimal.Parse(txtObsahAlkoholu.Text),
+                Id_stupne = (int)cbStupnovitost.SelectedValue,
+                Id_barvy = (int)cbBarva.SelectedValue,
+                Id_typu = (int)cbTypPiva.SelectedValue,
+                Id_pivovaru = (int)cbPivovar.SelectedValue
+            };
+
+            _context.Piva.Add(pivo);
+            _context.SaveChanges();
+
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

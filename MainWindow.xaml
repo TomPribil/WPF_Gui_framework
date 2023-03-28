@@ -6,13 +6,6 @@
         xmlns:local="clr-namespace:WPF_Gui_framework"
         mc:Ignorable="d"
         Title="Databáze piv" Height="450" Width="800">
-    <!--<Grid>
-        <DataGrid Name="dtGrid" VerticalAlignment="Bottom" 
-                  ItemsSource="{Binding}" Height="300"/>
-        <TextBox Grid.Row="0" Name="txtInput" HorizontalAlignment="Left" Margin="33,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="593" Height="44"/>
-        <Button Name="enterBttn" Content="Proveď" HorizontalAlignment="Left" Margin="646,30,0,0" VerticalAlignment="Top" Height="44" Width="87" Click="enterBttn_Click"/>
-
-    </Grid>-->
     <ScrollViewer >
         <StackPanel>
             <TextBox x:Name="txtFilter" KeyDown="txtFilter_KeyDown"/>

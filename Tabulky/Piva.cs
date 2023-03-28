@@ -12,7 +12,7 @@ namespace WPF_Gui_framework
         [ForeignKey("Stupnovitost")]
         public int Id_stupne { get; set; }
         public int? IBU { get; set; }
-        public int? Obsah_alkoholu { get; set; }
+        public decimal? Obsah_alkoholu { get; set; }
         [ForeignKey("Barva")]
         public int Id_barvy { get; set; }
         [ForeignKey("TypPiva")]
@@ -24,6 +24,5 @@ namespace WPF_Gui_framework
         public virtual Barva Barva { get; set; }
         public virtual TypPiva TypPiva { get; set; }
         public virtual Pivovary Pivovary { get; set; }
-        //public object Stupen { get; internal set; }
     }
 }
