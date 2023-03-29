@@ -6,25 +6,32 @@
         xmlns:local="clr-namespace:WPF_Gui_framework"
         mc:Ignorable="d"
         Title="Databáze piv" Height="450" Width="800">
-    <ScrollViewer >
-        <StackPanel>
-            <TextBox x:Name="txtFilter" KeyDown="txtFilter_KeyDown"/>
-            <Button Content="Přidat Pivo" Click="AddBeer_Click" Name="AddBeer"/>
-            <DataGrid x:Name="dgPiva" 
-                      AutoGenerateColumns="False" 
-                      CanUserAddRows="False" 
-                      ItemsSource="{Binding FilteredPiva}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Název" Binding="{Binding Nazev}" />
-                    <DataGridTextColumn Header="Stupeň" Binding="{Binding Stupnovitost.Nazev}" />
-                    <DataGridTextColumn Header="IBU" Binding="{Binding IBU}" />
-                    <DataGridTextColumn Header="Obsah Alkoholu" Binding="{Binding Obsah_alkoholu}" />
-                    <DataGridTextColumn Header="Barva" Binding="{Binding Barva.Nazev}" />
-                    <DataGridTextColumn Header="Typ" Binding="{Binding TypPiva.Nazev}" />
-                    <DataGridTextColumn Header="Pivovar" Binding="{Binding Pivovary.Nazev}" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
-    </ScrollViewer>
+        <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBox x:Name="txtFilter" Margin="5" Width="150" KeyDown="txtFilter_KeyDown"/>
+                        <Button x:Name="AddBeer" Content="Přidat Pivo" Margin="5" Click="AddBeer_Click" />
+                </StackPanel>
+
+                <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="DarkGray" />
+
+                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <DataGrid x:Name="dgPiva" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding FilteredPiva}" Margin="10">
+                                <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Název" Binding="{Binding Nazev}" />
+                                        <DataGridTextColumn Header="Stupeň" Binding="{Binding Stupnovitost.Nazev}" />
+                                        <DataGridTextColumn Header="IBU" Binding="{Binding IBU}" />
+                                        <DataGridTextColumn Header="Obsah Alkoholu" Binding="{Binding Obsah_alkoholu}" />
+                                        <DataGridTextColumn Header="Barva" Binding="{Binding Barva.Nazev}" />
+                                        <DataGridTextColumn Header="Typ" Binding="{Binding TypPiva.Nazev}" />
+                                        <DataGridTextColumn Header="Pivovar" Binding="{Binding Pivovary.Nazev}" />
+                                </DataGrid.Columns>
+                        </DataGrid>
+                </ScrollViewer>
+        </Grid>
 </Window>
